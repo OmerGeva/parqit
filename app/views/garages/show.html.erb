@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1><%= @garage.title %></h1> <!--Add name to user!!!!!!!!!!!!!!!!!! -->
+    <h6><%= @garage.address %></h6>
+  </div>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>Garage's Parking Spots:</h3>
+    <%= link_to "Add Parking Spot", new_garage_parking_spot_path(@garage), class: 'btn btn-primary' %>
+  </div>
+  <div class="grid">
+    <div class="row">
+      <% @garage.parking_spots.each do |parking_spot| %>
+        <div class="col-4">
+          <div class="card-garage mb-3">
+            <img src="https://images.unsplash.com/photo-1523362612182-052e9ff2c8da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" />
+            <div class="card-garage-infos">
+              <h2><%= parking_spot.description %></h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

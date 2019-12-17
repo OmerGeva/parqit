@@ -3,4 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :bookings
+  has_many :garages
+  has_one :account
+
+  after_create :make_account
+
+  private
+
+  def make_account
+    Account.create(user: self)
+  end
 end

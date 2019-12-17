@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h1 class="text-center"><%= current_user.email.match(/\w+@/).to_s.gsub('@', '').capitalize %></h1> <!--Add name to user!!!!!!!!!!!!!!!!!! -->
+  <div class="d-flex justify-content-between mb-3">
+    <h3>Your Garages:</h3>
+    <%= link_to "Add New Garage", new_account_garage_path(current_user), class: 'btn btn-primary' %>
+  </div>
+  <% @garages.each do |garage| %>
+    <%= link_to garage_path(garage)  do%>
+      <div class="card-garage mb-3">
+        <img src="https://en.pango.co.il/filestock/file/1491725924177-0.jpg" />
+        <div class="card-garage-infos">
+          <h2><%= garage.title %></h2>
+          <p><%= garage.description %></p>
+         </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
