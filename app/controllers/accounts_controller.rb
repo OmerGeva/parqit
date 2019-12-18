@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   def show
-    @garages = current_user.garages
+    @parking_spots = current_user.parking_spots
   end
 
 end

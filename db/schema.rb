@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_161954) do
+ActiveRecord::Schema.define(version: 2019_12_17_201210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,34 +23,25 @@ ActiveRecord::Schema.define(version: 2019_12_17_161954) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.float "duration"
     t.bigint "user_id"
     t.bigint "parking_spot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["parking_spot_id"], name: "index_bookings_on_parking_spot_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "garages", force: :cascade do |t|
-    t.integer "latitude"
-    t.integer "longitude"
+  create_table "parking_spots", force: :cascade do |t|
     t.string "description"
     t.bigint "user_id"
+    t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.string "address"
-    t.index ["user_id"], name: "index_garages_on_user_id"
-  end
-
-  create_table "parking_spots", force: :cascade do |t|
-    t.string "description"
-    t.bigint "garage_id"
-    t.boolean "available"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["garage_id"], name: "index_parking_spots_on_garage_id"
+    t.index ["user_id"], name: "index_parking_spots_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,6 +60,5 @@ ActiveRecord::Schema.define(version: 2019_12_17_161954) do
   add_foreign_key "accounts", "users"
   add_foreign_key "bookings", "parking_spots"
   add_foreign_key "bookings", "users"
-  add_foreign_key "garages", "users"
-  add_foreign_key "parking_spots", "garages"
+  add_foreign_key "parking_spots", "users"
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bookings
-  has_many :garages
+  has_many :parking_spots
   has_one :account
 
   after_create :make_account

@@ -1,4 +1,4 @@
-.card-garage {
+.card-parking_spot {
   overflow: hidden;
   height: 120px;
   background: white;
@@ -15,19 +15,19 @@ a {
     color: gray
   }
 }
-.card-garage img {
+.card-parking_spot img {
   height: 100%;
   width: 120px;
   object-fit: cover;
 }
 
-.card-garage h2 {
+.card-parking_spot h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-garage p {
+.card-parking_spot p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
@@ -35,6 +35,14 @@ a {
   margin-top: 8px;
 }
 
-.card-garage .card-garage-infos {
+.card-parking_spot .card-parking_spot-infos {
   padding: 16px;
+}
+
+.spot_available{
+background: rgba(185,227,198,0.8);
+}
+
+.spot_unavailable{
+background: rgba(240,74,89,0.8);
 }

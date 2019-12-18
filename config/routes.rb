@@ -4,12 +4,11 @@ Rails.application.routes.draw do
 
 
   resources :accounts, only: [:show] do
-    resources :garages, only: [:new, :create]
-  end
-
-  resources :garages, only: [:index, :show] do
     resources :parking_spots, only: [:new, :create]
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :parking_spots, only: [:show, :index] do
+    resources :bookings, only: [:new, :create]
+  end
+
 end
