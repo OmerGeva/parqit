@@ -1,16 +1,45 @@
 <div class="container mt-5">
-  <h1 class="text-center"><%= current_user.email.match(/\w+@/).to_s.gsub('@', '').capitalize %></h1> <!--Add name to user!!!!!!!!!!!!!!!!!! -->
+  <h1 class="text-center"><%= current_user.email.match(/\w+@/).to_s.gsub('@', '').capitalize %></h1>
   <div class="d-flex justify-content-between mb-3">
     <h3>Your Parking Spots:</h3>
-    <%= link_to "Add Parking Spot", new_account_parking_spot(current_user), class: 'btn btn-primary' %>
+    <%= link_to "Add Parking Spot", new_account_parking_spot_path(current_user), class: 'btn btn-primary' %>
   </div>
   <% @parking_spots.each do |parking_spot| %>
-    <%= link_to parking_spot_path(parking_spot)  do%>
+    <div class="card-parking_spot mb-3">
+      <img src="https://en.pango.co.il/filestock/file/1491725924177-0.jpg" />
+      <div class="card-parking_spot-infos">
+        <h2><%= parking_spot.title %></h2>
+        <p><%= parking_spot.description %></p>
+       </div>
+      <% unless parking_spot.available %>
+      <p class="p-2 border">Booked</p>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>Your Upcoming Bookings:</h3>
+  </div>
+  <% current_user.bookings.each do |booking| %>
+    <% if booking.start_time >= Time.now %>
       <div class="card-parking_spot mb-3">
         <img src="https://en.pango.co.il/filestock/file/1491725924177-0.jpg" />
         <div class="card-parking_spot-infos">
-          <h2><%= parking_spot.title %></h2>
-          <p><%= parking_spot.description %></p>
+          <h2><%= booking.parking_spot.title %></h2>
+          <p><%= booking.parking_spot.description %></p>
+         </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>Your Previous Bookings:</h3>
+  </div>
+  <% current_user.bookings.each do |booking| %>
+    <% if booking.end_time <= Time.now %>
+      <div class="card-parking_spot mb-3">
+        <img src="https://en.pango.co.il/filestock/file/1491725924177-0.jpg" />
+        <div class="card-parking_spot-infos">
+          <h2><%= booking.parking_spot.title %></h2>
+          <p><%= booking.parking_spot.description %></p>
          </div>
       </div>
     <% end %>

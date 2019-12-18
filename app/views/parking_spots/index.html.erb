@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="grid">
+    <div class="row">
+      <% @parking_spots.each do |parking_spot| %>
+        <div class="col-4">
+          <% if parking_spot.available %>
+            <div class="card-parking_spot mb-3">
+              <img src="https://en.pango.co.il/filestock/file/1491725924177-0.jpg" />
+              <div class="card-parking_spot-infos">
+                <h2><%= parking_spot.title %></h2>
+                <p><%= parking_spot.description %></p>
+                <% unless parking_spot.user == current_user %>
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bookParkingSpot">
+                    Book Spot
+                  </button>
+                <%= link_to "Review Spot", parking_spot_path(parking_spot), class:'btn btn-light btn-sm' %>
+                <% else parking_spot.user == current_user %>
+                  <p class='p-2 border'>Your Spot</p>
+                <% end %>
+                <!-- Modal -->
+                <div class="modal fade" id="bookParkingSpot" tabindex="-1" role="dialog" aria-labelledby="bookParkingSpotTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Book a spot</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h1><%= parking_spot.title %></h1>
+                        <h4><%= parking_spot.address %></h4>
+                        <p><%= parking_spot.description %></p>
+                        <%= simple_form_for [parking_spot, @booking] do |f| %>
+                        <%= f.input :start_time %>
+                        <%= f.input :end_time %>
+                        <%= f.submit "Park Here!", class: "btn btn-primary btn-block mb-5" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

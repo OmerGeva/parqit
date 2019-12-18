@@ -5,7 +5,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    raise
+    @booking.user = current_user
+    @booking.parking_spot = ParkingSpot.find(params[:parking_spot_id])
+    @booking.save
+
+    redirect_to parking_spots_path
   end
 
   private

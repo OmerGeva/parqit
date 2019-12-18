@@ -1,7 +1,21 @@
 class ParkingSpotsController < ApplicationController
-
   def index
-    @parking_spots = ParkingSpot.all
+    counter = 0
+    ParkingSpot.all.each do |parking_spot|
+      parking_spot.bookings.all.each do |booking|
+        counter += 1 unless booking.start_time < Time.now && booking.end_time > Time.now
+      end
+      parking_spot.available = parking_spot.bookings.count == counter
+
+      parking_spot.save!
+      counter = 0
+    end
+    @parking_spots = ParkingSpot.where(available: true)
+    @booking = Booking.new
+  end
+
+  def show
+    @parking_spot = ParkingSpot.find(params[:id])
   end
 
   def new
