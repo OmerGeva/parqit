@@ -5,7 +5,7 @@
         <div class="col-4">
           <% if parking_spot.available %>
             <div class="card-parking_spot mb-3">
-              <img src="https://en.pango.co.il/filestock/file/1491725924177-0.jpg" />
+              <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
               <div class="card-parking_spot-infos">
                 <h2><%= parking_spot.title %></h2>
                 <p><%= parking_spot.description %></p>
