@@ -27,6 +27,9 @@
           <h2><%= booking.parking_spot.title %></h2>
           <p><%= booking.parking_spot.description %></p>
          </div>
+        <div class="card-parking_spot-infos">
+          <p><strong><%= booking.start_time.strftime('%e %B') %></strong> <%= booking.start_time.strftime('%T') %> - <%= booking.end_time.strftime('%T') %></p>
+        </div>
       </div>
     <% end %>
   <% end %>

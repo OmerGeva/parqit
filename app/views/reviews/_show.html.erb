@@ -1,0 +1,24 @@
+<h2 class='text-center'>Reviews</h2>
+
+<% if @parking_spot.reviews.empty? %>
+  <center><em>No reviews yet</em></center>
+
+<% else %>
+  <% @parking_spot.reviews.each do |review| %>
+    <!-- <div class="review-avatar"> -->
+      <%#= cl_image_tag review.user.photo, class: "avatar" %>
+    <!-- </div> -->
+    <div class='review border-bottom'>
+      <strong><%= review.title %></strong>
+      <div class='stars'>
+        <% review.rating.times do %>
+        <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - review.rating).times do %>
+        <i class="far fa-star"></i>
+        <% end %>
+      </div>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+<% end %>
