@@ -7,7 +7,8 @@ class PagesController < ApplicationController
     @markers = @parking_spots.map do |parking_spot|
       {
         lat: parking_spot.latitude,
-        lng: parking_spot.longitude
+        lng: parking_spot.longitude,
+        infoWindow: render_to_string(partial: "parking_spots/info_window", locals: { parking_spot: parking_spot })
       }
     end
   end

@@ -1,7 +1,8 @@
 class ParkingSpotsController < ApplicationController
   def index
+    all_spots = ParkingSpot.near((params[:query]),10)
     counter = 0
-    ParkingSpot.all.each do |parking_spot|
+    all_spots.all.each do |parking_spot|
       parking_spot.bookings.all.each do |booking|
         counter += 1 unless booking.start_time < Time.now && booking.end_time > Time.now
       end
@@ -10,7 +11,7 @@ class ParkingSpotsController < ApplicationController
       parking_spot.save!
       counter = 0
     end
-    @parking_spots = ParkingSpot.where(available: true)
+    @parking_spots = all_spots.where(available: true)
     @booking = Booking.new
   end
 

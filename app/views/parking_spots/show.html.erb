@@ -1,13 +1,52 @@
+<div class="m-3">
+  <div class="d-flex justifty-content-between">
+    <div class="col-4  parking-info d-flex flex-column">
+      <h1><%= @parking_spot.title %></h1>
+      <p><%= @parking_spot.address %></p>
+      <h3><%= @parking_spot.description %></h3>
+      <% unless @parking_spot.user == current_user %>
+        <button type="button" class="btn btn-primary btn-block mt-auto mb-2" data-toggle="modal" data-target="#bookParkingSpot">
+          Book Spot
+        </button>
+      <% else @parking_spot.user == current_user %>
+        <p class='p-2 border'>Your Spot</p>
+      <% end %>
+    </div>
+    <div class="col-8 ">
+      <%= cl_image_tag @parking_spot.photo %>
+    </div>
+  </div>
+</div>
+
+
 <div class="container">
-  <h1><%= @parking_spot.title %></h1>
-  <p><%= @parking_spot.address %></p>
-  <h3><%= @parking_spot.description %></h3>
   <div class="border mb-5 p-5">
     <div class="reviews" id="reviews">
         <%= render 'reviews/show', parking_spot: @parking_spot %>
     </div>
     <div class="container" id="new_review">
         <%= render 'reviews/form', parking_spot: @parking_spot, review: @review %>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="bookParkingSpot" tabindex="-1" role="dialog" aria-labelledby="bookParkingSpotTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Book a spot</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@parking_spot, Booking.new] do |f| %>
+        <%= f.input :start_time, input_html: {class: "datepicker"} %>
+        <%= f.input :end_time, input_html: {class: "datepicker"} %>
+        <%= f.submit "Park Here!", class: "btn btn-primary btn-block mb-5" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,4 @@
+<h4><%= parking_spot.title %></h4>
+<%= cl_image_tag parking_spot.photo, height: 100, width: 150, crop: :fill %>
+<p><%= parking_spot.address %></p>
+<%= link_to 'See Parking Spot', parking_spot_path(parking_spot), class: 'btn btn-primary btn-sm'  %>
