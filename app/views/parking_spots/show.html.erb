@@ -1,20 +1,18 @@
-<div class="m-3">
-  <div class="d-flex justifty-content-between">
-    <div class="col-4  parking-info d-flex flex-column">
-      <h1><%= @parking_spot.title %></h1>
-      <p><%= @parking_spot.address %></p>
-      <h3><%= @parking_spot.description %></h3>
-      <% unless @parking_spot.user == current_user %>
-        <button type="button" class="btn btn-primary btn-block mt-auto mb-2" data-toggle="modal" data-target="#bookParkingSpot">
-          Book Spot
-        </button>
-      <% else @parking_spot.user == current_user %>
-        <p class='p-2 border'>Your Spot</p>
-      <% end %>
-    </div>
-    <div class="col-8 ">
-      <%= cl_image_tag @parking_spot.photo %>
-    </div>
+<div class="mt-2">
+  <div class="col-12 show-parking-spot-img">
+    <%= cl_image_tag @parking_spot.photo, width: 350, height: 200, crop: :fill %>
+  </div>
+  <div class="col-10  parking-info d-flex flex-column">
+    <h1><%= @parking_spot.title %></h1>
+    <p><%= @parking_spot.address %></p>
+    <h3><%= @parking_spot.description %></h3>
+    <% unless @parking_spot.user == current_user %>
+      <button type="button" class="btn btn-primary btn-block mt-auto mb-2" data-toggle="modal" data-target="#bookParkingSpot">
+        Book Spot
+      </button>
+    <% else @parking_spot.user == current_user %>
+      <p class='p-2 border'>Your Spot</p>
+    <% end %>
   </div>
 </div>
 

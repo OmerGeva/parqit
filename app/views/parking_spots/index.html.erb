@@ -1,19 +1,22 @@
 <div class="container mt-5">
   <div class="grid">
+    <h1 class="mb-2">Parking Spots near "<%= @search_result %>"</h1>
     <div class="row">
       <% @parking_spots.each do |parking_spot| %>
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-1">
           <% if parking_spot.available %>
             <div class="card-parking_spot mb-3">
               <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
               <div class="card-parking_spot-infos">
-                <h2><%= parking_spot.title %></h2>
-                <p><%= parking_spot.description %></p>
+                <h2><%= link_to parking_spot.title,  parking_spot_path(parking_spot) %></h2>
+                <p class="mb-2"><%= parking_spot.description %></p>
                 <% unless parking_spot.user == current_user %>
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bookParkingSpot">
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-primary btn-sm book-button" data-toggle="modal" data-target="#bookParkingSpot">
                     Book Spot
                   </button>
-                <%= link_to "Review Spot", parking_spot_path(parking_spot), class:'btn btn-light btn-sm' %>
+                  <h6>$<%= parking_spot.price %>/hour</h6>
+                </div>
                 <% else parking_spot.user == current_user %>
                   <p class='p-2 border'>Your Spot</p>
                 <% end %>
@@ -32,8 +35,8 @@
                         <h4><%= parking_spot.address %></h4>
                         <p><%= parking_spot.description %></p>
                         <%= simple_form_for [parking_spot, @booking] do |f| %>
-                        <%= f.input :start_time %>
-                        <%= f.input :end_time %>
+                        <%= f.input :start_time, as: :string, input_html: {id: "range_start"} %>
+                        <%= f.input :end_time, as: :string, input_html: {id: "range_end"} %>
                         <%= f.submit "Park Here!", class: "btn btn-primary btn-block mb-5" %>
                         <% end %>
                       </div>

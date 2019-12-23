@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_023143) do
+ActiveRecord::Schema.define(version: 2019_12_22_172555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_023143) do
     t.datetime "updated_at", null: false
     t.datetime "start_time"
     t.datetime "end_time"
+    t.float "total_price"
     t.index ["parking_spot_id"], name: "index_bookings_on_parking_spot_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_023143) do
     t.string "photo"
     t.float "latitude"
     t.float "longitude"
+    t.float "price"
     t.index ["user_id"], name: "index_parking_spots_on_user_id"
   end
 

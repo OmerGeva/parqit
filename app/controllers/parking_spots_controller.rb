@@ -1,5 +1,6 @@
 class ParkingSpotsController < ApplicationController
   def index
+    @search_result = params[:query]
     all_spots = ParkingSpot.near((params[:query]),10)
     counter = 0
     all_spots.all.each do |parking_spot|
