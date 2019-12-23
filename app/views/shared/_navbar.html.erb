@@ -1,12 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light">
-  <%= link_to account_path(current_user), class: "navbar-brand mouse-hover" do%>
-    <%= image_tag "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"%>
-  <% end %>
-  <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
-  <% end %>
-  <%= link_to new_account_parking_spot_path(current_user), class: "navbar-brand mouse-hover" do%>
-    <%= image_tag "https://img.icons8.com/officel/2x/plus.png", class: "avatar dropdown-toggle"%>
+  <% if current_user %>
+    <%= link_to account_path(current_user), class: "navbar-brand mouse-hover" do%>
+      <%= image_tag "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"%>
+    <% end %>
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
+    <% end %>
+    <%= link_to new_account_parking_spot_path(current_user), class: "navbar-brand mouse-hover" do%>
+      <%= image_tag "https://img.icons8.com/officel/2x/plus.png", class: "avatar dropdown-toggle"%>
+    <% end %>
+  <% else %>
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
+    <% end %>
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
   <% end %>
 </div>
 
