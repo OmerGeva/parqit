@@ -14,6 +14,7 @@ class ParkingSpotsController < ApplicationController
     end
     @parking_spots = all_spots.where(available: true)
     @booking = Booking.new
+    @parking_spots = ParkingSpot.all
   end
 
   def show
