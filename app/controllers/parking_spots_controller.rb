@@ -1,7 +1,11 @@
 class ParkingSpotsController < ApplicationController
+  skip_before_action :authenticate_user!
+
+  before_action :set_parking_spot, only: [:show, :toggle_available]
+
   def index
     @search_result = params[:query]
-    all_spots = ParkingSpot.near((params[:query]),10)
+    all_spots = ParkingSpot.near(params[:query], 10)
     counter = 0
     all_spots.all.each do |parking_spot|
       parking_spot.bookings.all.each do |booking|
@@ -18,13 +22,16 @@ class ParkingSpotsController < ApplicationController
   end
 
   def show
-    @parking_spot = ParkingSpot.find(params[:id])
     @review = Review.new
+
+    authorize @parking_spot
   end
 
   def new
     @parking_spot = ParkingSpot.new
     @account = current_user.account
+
+    authorize @parking_spot
   end
 
   def create
@@ -35,11 +42,26 @@ class ParkingSpotsController < ApplicationController
     else
       render :new
     end
+
+    authorize @parking_spot
+  end
+
+  def toggle_available
+    @parking_spot.available = @parking_spot.available ? false : true
+    @parking_spot.save!
+
+    redirect_to account_path(current_user)
+
+    authorize @parking_spot
   end
 
   private
 
   def parking_spot_params
     params.require(:parking_spot).permit(:description, :title, :address, :photo)
+  end
+
+  def set_parking_spot
+    @parking_spot = ParkingSpot.find(params[:id])
   end
 end

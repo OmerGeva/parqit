@@ -11,7 +11,13 @@
         Book Spot
       </button>
     <% else @parking_spot.user == current_user %>
-      <p class='p-2 border'>Your Spot</p>
+      <div class="d-flex">
+        <% unless @parking_spot.available %>
+          <%= link_to 'Offer Spot', available_parking_spot_path(@parking_spot), class: 'btn btn-primary btn-block mb-2', method: :patch %>
+        <% else %>
+          <%= link_to 'Take spot off', available_parking_spot_path(@parking_spot), class: 'btn btn-primary btn-block mb-2', method: :patch %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -40,9 +46,9 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@parking_spot, Booking.new] do |f| %>
-        <%= f.input :date, as: :string, placeholder: Date.today, input_html: {class: "datepicker"} %>
-        <%= f.input :start_time, as: :string, input_html: {class: "start_time"} %>
-        <%= f.input :end_time, as: :string, input_html: {class: "end_time"} %>
+        <%= f.input :date, as: :string, required: false, placeholder: Date.today, input_html: {class: "datepicker"} %>
+        <%= f.input :start_time, as: :string, required: false, input_html: {class: "start_time"} %>
+        <%= f.input :end_time, as: :string, required: false, input_html: {class: "end_time"} %>
         <%= f.submit "Park Here!", class: "btn btn-primary btn-block mb-5" %>
         <% end %>
       </div>

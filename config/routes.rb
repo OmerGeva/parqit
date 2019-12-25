@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :parking_spots, only: [:show, :index] do
+    member do
+      patch 'available', to: 'parking_spots#toggle_available'
+    end
     resources :bookings, only: [:new, :create]
     resources :reviews, only: [:new, :create]
   end
