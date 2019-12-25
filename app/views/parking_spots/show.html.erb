@@ -40,8 +40,9 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@parking_spot, Booking.new] do |f| %>
-        <%= f.input :start_time, as: :string, placeholder: Date.today, input_html: {id: "range_start"} %>
-        <%= f.input :end_time, as: :string, placeholder: Date.today, input_html: {id: "range_end"} %>
+        <%= f.input :date, as: :string, placeholder: Date.today, input_html: {class: "datepicker"} %>
+        <%= f.input :start_time, as: :string, input_html: {class: "start_time"} %>
+        <%= f.input :end_time, as: :string, input_html: {class: "end_time"} %>
         <%= f.submit "Park Here!", class: "btn btn-primary btn-block mb-5" %>
         <% end %>
       </div>

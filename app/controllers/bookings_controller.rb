@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    raise
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.parking_spot = ParkingSpot.find(params[:parking_spot_id])
