@@ -9,12 +9,19 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.parking_spot = @parking_spot
     @review.user = current_user
-
     if @review.save
-      redirect_to parking_spot_path(@review.parking_spot)
+      respond_to do |format|
+        format.html { redirect_to parking_spot_path(@review.parking_spot) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render new }
+        format.js
+      end
     end
+
+    authorize @review
   end
 
   private
