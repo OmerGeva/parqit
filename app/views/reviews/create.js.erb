@@ -1,15 +1,12 @@
 function refreshForm(innerHTML) {
   const newReviewForm = document.getElementById('new_review');
   newReviewForm.innerHTML = innerHTML;
-  console.log('refreshed form');
 }
 
 function addReview(reviewHTML) {
   const reviews = document.getElementById('reviews');
   reviews.innerHTML = ""
   reviews.insertAdjacentHTML('beforeend', reviewHTML);
-
-  console.log('added review');
 }
 
 <% if @review.errors.any? %>
