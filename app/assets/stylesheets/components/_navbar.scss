@@ -1,19 +1,36 @@
-.navbar {
-  height: 10vh;
-  width: 100%;
-  background: rgba(10,10,10,0.8);
-  bottom: 0;
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  position: sticky;
-}
-
-.navbar .navbar-brand img {
+.navbar-img img {
   width: 40px;
 }
-.nav-link{
-margin: 4px;
-border-radius: 2px;
-background-color: white;
+
+.nav-top{
+background-color: #393939;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+  padding-top: 0px;
+  transition: 0.3s;
+}
+
+#close-nav-btn {
+  top: 5%;
+  font-size: 36px;
+  right: 20%;
+  color: #FFFFFF;
+}
+
+
+#open-nav-btn {
+  color:  #393939;
+  z-index: 1;
+  position: fixed;
+  top: 2.5vh;
+  font-size: 36px;
+  margin-left: 5%;
 }

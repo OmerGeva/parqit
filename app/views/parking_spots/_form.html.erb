@@ -4,7 +4,7 @@
   <%= f.input :description %>
   <%= f.input :address %>
   <%= image_tag "", width: 200, class: "hidden", id: "photo-preview" %>
-  <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photo' %>
+  <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photo' %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit "Add Spot", class: "btn btn-primary btn-block mb-5" %>
   <% end %>

@@ -1,19 +1,63 @@
-<div class="navbar navbar-expand-sm navbar-light">
+<i class="fas fa-bars" id="open-nav-btn"></i>
+<div id="mySidenav" class="sidenav">
   <% if current_user %>
-    <%= link_to account_path(current_user), class: "navbar-brand mouse-hover" do%>
-      <%= image_tag "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"%>
-    <% end %>
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
-    <% end %>
-    <%= link_to new_account_parking_spot_path(current_user), class: "navbar-brand mouse-hover" do%>
-      <%= image_tag "https://img.icons8.com/officel/2x/plus.png", class: "avatar dropdown-toggle"%>
-    <% end %>
+    <ul>
+      <li>
+        <div class="nav-top pb-3">
+          <div class="d-flex justify-content-between mb-3">
+            <span></span>
+            <h3 id="close-nav-btn" class="m-3"><i class="fas fa-arrow-left"></i></h3>
+          </div>
+          <div class="p-3">
+            <%= link_to account_path(current_user), class: "d-flex align-items-center justify-content-between navbar-img mouse-hover" do%>
+                <%= image_tag "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"%>
+              <h4><%= current_user.full_name %></h4>
+            <% end %>
+          </div>
+        </div>
+      </li>
+      <li class="p-3 border-top">
+        <%= link_to "/", class: "navbar-img align-items-center justify-content-between d-flex" do %>
+          <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
+          <h5 class="mb-0">Find Parking</h5>
+        <% end %>
+      </li>
+      <li class="p-3 border-top">
+        <%= link_to new_account_parking_spot_path(current_user), class: "navbar-img align-items-center justify-content-between d-flex mouse-hover" do%>
+          <%= image_tag "https://www.pinclipart.com/picdir/middle/8-80460_add-plus-plus-sign-circle-png-clipart.png"%>
+          <h5 class="mb-0">Add a new spot</h5>
+        <% end %>
+      </li>
+      <li class="p-3 border-top">
+        <%= link_to destroy_user_session_path, class: "navbar-img align-items-center justify-content-between d-flex mouse-hover", method: :delete do%>
+          <%= image_tag "https://png.pngtree.com/svg/20170901/logout_584613.png"%>
+          <h5 class="mb-0">Log out</h5>
+        <% end %>
+      </li>
+    </ul>
   <% else %>
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
-    <% end %>
-    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    <ul>
+      <li>
+        <div class="nav-top pb-3">
+          <div class="d-flex justify-content-between mb-3">
+            <span></span>
+            <h3 id="close-nav-btn" class="m-3"><i class="fas fa-arrow-left"></i></h3>
+          </div>
+          <div class="p-3">
+            <%= link_to new_user_session_path, class: "d-flex align-items-center justify-content-between navbar-img mouse-hover" do%>
+                <%= image_tag "https://www.groundai.com/static/groundai/img/avatar-placeholder.png"%>
+              <h4>Log In</h4>
+            <% end %>
+          </div>
+        </div>
+      </li>
+     <li class="p-3 border-top">
+       <%= link_to "/", class: "navbar-img align-items-center justify-content-between d-flex" do %>
+         <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
+         <h5 class="mb-0">Find Parking</h5>
+       <% end %>
+     </li>
+    </ul>
   <% end %>
 </div>
 
