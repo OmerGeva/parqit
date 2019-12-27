@@ -50,7 +50,6 @@ class ParkingSpotsController < ApplicationController
     @parking_spot.available = @parking_spot.available ? false : true
     @parking_spot.save!
 
-    redirect_to account_path(current_user)
 
     authorize @parking_spot
   end

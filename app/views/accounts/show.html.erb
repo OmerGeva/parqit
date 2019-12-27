@@ -66,10 +66,10 @@
               <h2><%= parking_spot.title %></h2>
               <p><%= parking_spot.description %></p>
              </div>
-            <% unless parking_spot.available %>
-              <%= link_to 'Offer Spot', available_parking_spot_path(parking_spot), class: 'btn btn-primary btn-sm', method: :patch %>
+            <% if parking_spot.available %>
+              <%= link_to 'Remove Spot', available_parking_spot_path(parking_spot), class: 'btn btn-primary btn-sm remove-spot-btn', method: :patch, remote: true %>
             <% else %>
-              <%= link_to 'Take spot off', available_parking_spot_path(parking_spot), class: 'btn btn-primary btn-sm', method: :patch %>
+              <%= link_to 'Offer Spot', available_parking_spot_path(parking_spot), class: 'btn btn-primary btn-sm offer-spot-btn', method: :patch, remote: true %>
             <% end %>
           </div>
         <% end %>

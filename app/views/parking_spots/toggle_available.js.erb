@@ -1,0 +1,21 @@
+
+if (document.querySelector('.offer-spot-btn')){
+  offerBtns = document.querySelectorAll('.offer-spot-btn');
+  offerBtns.forEach(button =>
+    button.addEventListener(('click'), (event) => {
+    button.classList.remove('offer-spot-btn');
+    button.classList.add('remove-spot-btn');
+    event.target.innerText = "Remove Spot";
+  }));
+}
+
+if (document.querySelector('.remove-spot-btn')){
+  removeBtns = document.querySelectorAll('.remove-spot-btn');
+  removeBtns.forEach(button =>
+    button.addEventListener(('click'), (event) => {
+    button.classList.remove('remove-spot-btn');
+    button.classList.add('offer-spot-btn');
+    event.target.innerText = "Offer Spot";
+  }));
+}
+
