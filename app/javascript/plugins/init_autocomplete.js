@@ -1,10 +1,9 @@
-// import places from 'places.js';
+import places from 'places.js';
 
-// const initAddressAutocomplete = () => {
-//   const addressInput = document.getElementById('flat_address');
-//   if (addressInput) {
-//     places({ container: addressInput });
-//   }
-// };
+const initAddressAutocomplete = () => {
+  const addressInput = document.querySelector('.mapboxgl-ctrl-geocoder--input');
+  document.querySelector('.suggestions-wrapper').style = "display: none;";
+  places({ container: addressInput });
+};
 
-// export { initAddressAutocomplete };
+export { initAddressAutocomplete };
