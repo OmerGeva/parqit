@@ -5,8 +5,8 @@ const fitMapToMarkers = (map, markers, defaultLongitude, defaultLatitude) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
 
-  // markers.forEach(marker => bounds.extend([ defaultLongitude, defaultLatitude ]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  // markers.forEach(marker => bounds.extend([ defaultLongitude, defaultLatitude ]));
 };
 
 const initMapbox = () => {

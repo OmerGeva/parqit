@@ -3,6 +3,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 import "../plugins/flatpickr"
+import { initSliders } from "../plugins/slider"
 import { toggleNavbar } from "../components/navbar"
 import { initStarRating } from '../plugins/init_star_rating';
 
@@ -18,3 +19,4 @@ toggleNavbar();
 previewImageOnFileSelect();
 initMapbox();
 initAddressAutocomplete();
+initSliders();

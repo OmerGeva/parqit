@@ -29,18 +29,18 @@ class ParkingSpotsController < ApplicationController
 
   def new
     @parking_spot = ParkingSpot.new
-    @account = current_user.account
-
+    @account = Account.find(params[:account_id])
     authorize @parking_spot
   end
 
   def create
     @parking_spot = ParkingSpot.new(parking_spot_params)
-    @parking_spot.user = current_user
-    if @parking_spot.save!
+    @parking_spot.user = Account.find(params[:account_id]).user
+
+    if @parking_spot.save
       redirect_to account_path(current_user)
     else
-      render :new
+      redirect_to new_account_parking_spot_path(current_user.account.id)
     end
 
     authorize @parking_spot
@@ -57,7 +57,7 @@ class ParkingSpotsController < ApplicationController
   private
 
   def parking_spot_params
-    params.require(:parking_spot).permit(:description, :title, :address, :photo)
+    params.require(:parking_spot).permit(:description, :title, :address, :photo, :price)
   end
 
   def set_parking_spot

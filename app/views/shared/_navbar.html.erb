@@ -23,7 +23,7 @@
         <% end %>
       </li>
       <li class="p-3 border-top">
-        <%= link_to new_account_parking_spot_path(current_user), class: "navbar-img align-items-center justify-content-between d-flex mouse-hover" do%>
+        <%= link_to new_account_parking_spot_path(current_user.account.id), class: "navbar-img align-items-center justify-content-between d-flex mouse-hover" do%>
           <%= image_tag "https://www.pinclipart.com/picdir/middle/8-80460_add-plus-plus-sign-circle-png-clipart.png"%>
           <h5 class="mb-0">Add a new spot</h5>
         <% end %>
