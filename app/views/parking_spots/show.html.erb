@@ -13,9 +13,9 @@
     <% else @parking_spot.user == current_user %>
       <div class="d-flex">
         <% unless @parking_spot.available %>
-          <%= link_to 'Offer Spot', available_parking_spot_path(@parking_spot), class: 'btn btn-primary btn-block mb-2', method: :patch %>
+          <%= link_to 'Offer Spot', available_parking_spot_path(@parking_spot), class: 'btn btn-primary btn-block mb-2', method: :patch, remote: true %>
         <% else %>
-          <%= link_to 'Take spot off', available_parking_spot_path(@parking_spot), class: 'btn btn-primary btn-block mb-2', method: :patch %>
+          <%= link_to 'Take spot off', available_parking_spot_path(@parking_spot), class: 'btn btn-primary btn-block mb-2', method: :patch, remote: true %>
         <% end %>
       </div>
     <% end %>

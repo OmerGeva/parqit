@@ -9,9 +9,9 @@
             <h3 id="close-nav-btn" class="m-3"><i class="fas fa-arrow-left"></i></h3>
           </div>
           <div class="p-3">
-            <%= link_to account_path(current_user), class: "d-flex align-items-center justify-content-between navbar-img mouse-hover" do%>
-                <%= image_tag "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"%>
-              <h4><%= current_user.full_name %></h4>
+            <%= link_to account_path(current_user), class: "d-flex align-items-center justify-content-between mouse-hover" do%>
+              <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-large" %>
+              <h4 class="mb-0"><%= current_user.full_name %></h4>
             <% end %>
           </div>
         </div>
