@@ -21,51 +21,61 @@
         <div class="d-flex justify-content-between mb-3">
           <h3>Your Upcoming Bookings:</h3>
         </div>
-        <% current_user.bookings.each do |booking| %>
-          <% if booking.date > Date.today ||  (booking.date == Date.today && booking.start_time > Time.now) %>
-            <div class="card-parking_spot mb-3">
+        <% unless @upcoming_bookings.empty? %>
+          <% @upcoming_bookings.each do |booking| %>
+            <div class="card-parking-spot mb-3">
               <%= cl_image_tag booking.parking_spot.photo, height: 300, width: 400, crop: :fill %>
-              <div class="card-parking_spot-infos">
+              <div class="card-parking-spot-infos">
                 <h2><%= booking.parking_spot.title %></h2>
                <div class="ml-auto d-flex mr-4">
                 <h6 class="mt-2">$<%= booking.total_price %></h6>
                </div>
                </div>
-              <div class="card-parking_spot-infos">
+              <div class="card-parking-spot-infos">
                 <p><strong><%= booking.date.strftime('%e %B') %></strong> <%= booking.start_time.strftime('%T') %> - <%= booking.end_time.strftime('%T') %></p>
               </div>
             </div>
           <% end %>
+        <% else %>
+          <div class="card-parking-spot mb-3">
+            <h5 class="m-auto">You have no upcoming bookings.</h5>
+          </div>
         <% end %>
         <div class="d-flex justify-content-between mb-3">
           <h3>Your Previous Bookings:</h3>
         </div>
-        <% current_user.bookings.each do |booking| %>
-          <% if booking.date <= Date.today && booking.end_time < Time.now %>
-           <div class="card-parking_spot mb-3">
+        <% unless @previous_bookings.empty? %>
+          <% @previous_bookings.each do |booking| %>
+           <div class="card-parking-spot mb-3">
               <%= cl_image_tag booking.parking_spot.photo, height: 300, width: 400, crop: :fill %>
-              <div class="card-parking_spot-infos">
+              <div class="card-parking-spot-infos">
                 <h2><%= booking.parking_spot.title %></h2>
                <div class="ml-auto d-flex mr-4">
                 <h6 class="mt-2">$<%= booking.total_price %></h6>
                </div>
                </div>
-              <div class="card-parking_spot-infos">
+              <div class="card-parking-spot-infos">
                 <p><strong><%= booking.date.strftime('%e %B') %></strong> <%= booking.start_time.strftime('%T') %> - <%= booking.end_time.strftime('%T') %></p>
               </div>
             </div>
           <% end %>
+        <% else %>
+          <div class="card-parking-spot mb-3">
+            <h5 class="m-auto">You have no previous bookings.</h5>
+          </div>
         <% end %>
       </ul>
       <ul id="listings-panel" class="panel">
         <h3>Your Parking Spots:</h3>
         <% @parking_spots.each do |parking_spot| %>
-          <div class="card-parking_spot mb-3">
-            <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
-            <div class="card-parking_spot-infos">
-              <h2><%= parking_spot.title %></h2>
-              <p><%= parking_spot.description %></p>
-             </div>
+          <div class="card-parking-spot mb-3">
+            <%= link_to parking_spot_path(parking_spot), class:"d-flex"  do%>
+              <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
+              <div class="card-parking-spot-infos">
+                <h2><%= parking_spot.title %></h2>
+                <p><%= parking_spot.description %></p>
+              </div>
+            <% end %>
             <% if parking_spot.available %>
               <%= link_to 'Remove Spot', available_parking_spot_path(parking_spot), class: 'btn btn-primary btn-sm remove-spot-btn', method: :patch, remote: true %>
             <% else %>

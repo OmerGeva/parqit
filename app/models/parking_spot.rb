@@ -5,6 +5,7 @@ class ParkingSpot < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
+  validates :price, presence: true
   before_create :set_available
   mount_uploader :photo, PhotoUploader
 
