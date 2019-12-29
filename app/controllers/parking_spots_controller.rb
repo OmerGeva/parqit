@@ -23,7 +23,9 @@ class ParkingSpotsController < ApplicationController
 
   def show
     @review = Review.new
-
+    @booking_dates = @parking_spot.bookings.map do |booking|
+      booking.date
+    end
     authorize @parking_spot
   end
 

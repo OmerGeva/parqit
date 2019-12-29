@@ -1,9 +1,16 @@
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css"
-// import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
 
+let dates = []
+if(document.querySelector('.datepicker') && document.querySelector('.datepicker').dataset.bookings.match(/\d{4}-\d{2}-\d{2}/g)){
+  dates = document.querySelector('.datepicker').dataset.bookings.match(/\d{4}-\d{2}-\d{2}/g).map((date) => {
+    return `${date}`
+  });
+}
 flatpickr(".datepicker", {
+  disable: dates,
+  minDate: "today",
   disableMobile: "true"
 })
 flatpickr(".start_time", {

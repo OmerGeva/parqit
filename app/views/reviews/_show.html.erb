@@ -5,9 +5,9 @@
 
 <% else %>
   <% @parking_spot.reviews.each do |review| %>
-    <!-- <div class="review-avatar"> -->
-      <%#= cl_image_tag review.user.photo, class: "avatar" %>
-    <!-- </div> -->
+    <div class="review-avatar">
+      <%= cl_image_tag review.user.photo, class: "avatar" %>
+    </div>
     <div class='review border-bottom'>
       <strong><%= review.title %></strong>
       <div class='stars'>
