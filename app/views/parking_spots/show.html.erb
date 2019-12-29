@@ -1,6 +1,6 @@
 <div class="mt-2">
   <div class="col-12 show-parking-spot-img">
-    <%= cl_image_tag @parking_spot.photo, width: 350, height: 200, crop: :fill %>
+    <%= cl_image_tag @parking_spot.photo, class: 'show-parking-spot-img' %>
   </div>
   <div class="col-11 parking-info d-flex flex-column">
     <h1><%= @parking_spot.title %></h1>
@@ -19,6 +19,13 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+  <div class="col-11 parking-info-user d-flex p-2 align-items-center">
+    <%= cl_image_tag @parking_spot.user.photo, class: 'avatar-large mr-3' %>
+    <div>
+      <p class="mb-0"><strong><%= @parking_spot.user.full_name %></strong></p>
+      <p class="mb-0"><%= @parking_spot.user.phone_number %></p>
+    </div>
   </div>
 </div>
 

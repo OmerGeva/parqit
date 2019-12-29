@@ -38,10 +38,15 @@ a {
 .parking-info {
   flex-grow: 1;
   background: rgba(200,200,200,0.9);
-  box-shadow: 5px 0px 15px rgba(10,10,10,0.1);
   margin: 8px auto;
+  border-radius: 3px;
 }
-
+.parking-info-user {
+  background: rgba(200,200,200,0.9);
+  margin: 8px auto;
+  border-radius: 3px;
+  border-left: 4px solid #ff6f5e;
+}
 .card-parking-spot .card-parking-spot-infos {
   padding: 16px;
 }

@@ -12,6 +12,7 @@ puts 'Creating users...'
 user1 = User.create(
   email: 'sponge@bob.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Sponge Bob'
   )
 user1.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574676603/SpongeBob_stock_art_wxxisz.png'
@@ -21,6 +22,7 @@ Account.create(user: user1)
 user2 = User.create(
   email: 'noah@nash.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Noah Nash'
   )
 user2.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574845946/Users/NoahNash_pco64j.jpg'
@@ -31,6 +33,7 @@ Account.create(user: user2)
 user3 = User.create(
   email: 'levy@henry.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Levy Henry'
   )
 user3.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574846398/Users/LevyHenry_kk3qiu.jpg'
@@ -40,6 +43,7 @@ Account.create(user: user3)
 omer = User.create(
   email: 'omer@geva.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Omer geva'
   )
 omer.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54701359?v=4'
@@ -49,6 +53,7 @@ Account.create(user: omer)
 brad = User.create(
   email: 'brad@korman.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Brad Korman'
   )
 brad.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54051432?v=4'
@@ -58,6 +63,7 @@ Account.create(user: brad)
 alisa = User.create(
   email: 'alisa@silina.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Alisa Silina'
   )
 alisa.remote_photo_url = 'https://avatars0.githubusercontent.com/u/54353429?v=4'
@@ -67,6 +73,7 @@ Account.create(user: alisa)
 david = User.create(
   email: 'david@sellam.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'David Sellam'
   )
 david.remote_photo_url = 'https://avatars1.githubusercontent.com/u/37403593?v=4'
@@ -76,6 +83,7 @@ Account.create(user: david)
 dean = User.create(
   email: 'dean@wheeler.com',
   password: '123456',
+  phone_number: '617-930-2373',
   full_name: 'Dean wheeler'
   )
 dean.remote_photo_url = 'https://avatars2.githubusercontent.com/u/35640022?v=4'
