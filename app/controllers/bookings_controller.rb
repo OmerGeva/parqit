@@ -5,12 +5,17 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.end_time = Time.zone.local_to_utc(params[:booking][:start_time].to_time) + params[:booking][:duration].to_i*3600
     @booking.user = current_user
     @booking.parking_spot = ParkingSpot.find(params[:parking_spot_id])
-    @booking.total_price = (((@booking.end_time) - (@booking.start_time))/3600) * @booking.parking_spot.price
-    @booking.save
+    @booking.total_price = params[:booking][:duration].to_i * @booking.parking_spot.price
 
-    redirect_to account_path(current_user)
+    if @booking.save
+
+      redirect_to account_path(current_user)
+    else
+      redirect_to parking_spot_path(@booking.parking_spot)
+    end
 
     authorize @booking
   end
@@ -18,6 +23,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_time, :end_time, :date)
+    params.require(:booking).permit(:start_time, :duration, :date)
   end
 end
