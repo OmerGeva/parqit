@@ -2,7 +2,7 @@
   <div class="col-12 show-parking-spot-img">
     <%= cl_image_tag @parking_spot.photo, width: 350, height: 200, crop: :fill %>
   </div>
-  <div class="col-10  parking-info d-flex flex-column">
+  <div class="col-11 parking-info d-flex flex-column">
     <h1><%= @parking_spot.title %></h1>
     <p><%= @parking_spot.address %></p>
     <h3><%= @parking_spot.description %></h3>

@@ -12,6 +12,13 @@
 @import "components/index";
 @import "pages/index";
 
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
 .mouse-hover {
   cursor: hand;
   cursor: pointer;
@@ -19,4 +26,15 @@
 
 ul {
   padding: 0;
+}
+
+body {
+  background-color: #f5f0e3;
+}
+
+.color-white{
+  color: #f5f0e3;
+}
+.background-color-white{
+  background-color: #f5f0e3;
 }

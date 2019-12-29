@@ -19,7 +19,7 @@
       <ul id="bookings-panel" class="panel active">
 
         <div class="d-flex justify-content-between mb-3">
-          <h3>Your Upcoming Bookings:</h3>
+          <h3>Upcoming Bookings:</h3>
         </div>
         <% unless @upcoming_bookings.empty? %>
           <% @upcoming_bookings.each do |booking| %>
@@ -42,7 +42,7 @@
           </div>
         <% end %>
         <div class="d-flex justify-content-between mb-3">
-          <h3>Your Previous Bookings:</h3>
+          <h3>Previous Bookings:</h3>
         </div>
         <% unless @previous_bookings.empty? %>
           <% @previous_bookings.each do |booking| %>
@@ -66,14 +66,13 @@
         <% end %>
       </ul>
       <ul id="listings-panel" class="panel">
-        <h3>Your Parking Spots:</h3>
+        <h3>Parking Spots:</h3>
         <% @parking_spots.each do |parking_spot| %>
           <div class="card-parking-spot mb-3">
             <%= link_to parking_spot_path(parking_spot), class:"d-flex flex-grow-1"  do%>
               <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
               <div class="card-parking-spot-infos">
                 <h2><%= parking_spot.title %></h2>
-                <p><%= parking_spot.description %></p>
               </div>
             <% end %>
             <% if parking_spot.available %>

@@ -3,7 +3,7 @@
 }
 
 .nav-top{
-background-color: #393939;
+background-color: #40bfc1;
 }
 .sidenav {
   height: 100%;
@@ -12,9 +12,10 @@ background-color: #393939;
   z-index: 3;
   top: 0;
   left: 0;
-  background-color: #FFFFFF;
+  background-color: #f5f0e3;
   overflow-x: hidden;
   padding-top: 0px;
+  border-right: 1px solid black;
   transition: 0.3s;
 }
 
@@ -33,4 +34,8 @@ background-color: #393939;
   top: 2.5vh;
   font-size: 36px;
   margin-left: 5%;
+}
+
+.btn {
+  color: #f5f0e3;
 }
