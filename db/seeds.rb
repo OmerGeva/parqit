@@ -1,5 +1,6 @@
 ########################## Deleting models ##########################
 puts "Cleaning Database..."
+Notification.destroy_all
 Booking.destroy_all
 Review.destroy_all
 ParkingSpot.destroy_all

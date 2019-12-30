@@ -25,14 +25,16 @@
           <% @upcoming_bookings.each do |booking| %>
             <div class="card-parking-spot mb-3">
               <%= cl_image_tag booking.parking_spot.photo, height: 300, width: 400, crop: :fill %>
-              <div class="card-parking-spot-infos">
-                <h2><%= booking.parking_spot.title %></h2>
-               <div class="ml-auto d-flex mr-4">
-                <h6 class="mt-2">$<%= booking.total_price %></h6>
-               </div>
-               </div>
-              <div class="card-parking-spot-infos">
-                <p><strong><%= booking.date.strftime('%e %B') %></strong> <%= booking.start_time.strftime('%T') %> - <%= booking.end_time.strftime('%T') %></p>
+              <div class="card-parking-spot-infos align-items-center">
+                <h2 class="text-center"><%= booking.parking_spot.title %></h2>
+                <div class="d-flex align-items-center ml-auto mb-0 pb-0">
+                    <h6 class="mt-1 mr-5">$<%= booking.total_price %></h6>
+                    <div class="card-parking-spot-infos p-0">
+                      <p><strong><%= booking.date.strftime('%e %B') %></strong> <%= booking.start_time.strftime('%T') %> - <%= booking.end_time.strftime('%T') %></p>
+                  </div>
+                </div>
+                <button id="sweet-alert-demo" class="btn btn-primary btn-block p-0 mt-1 mb-1">Cancel Booking</button>
+                <%= link_to 'Cancel', booking_path(booking), id: 'delete-booking-btn', style: 'display: none;', method: :delete %>
               </div>
             </div>
           <% end %>
