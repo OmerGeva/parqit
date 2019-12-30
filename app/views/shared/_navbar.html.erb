@@ -21,7 +21,9 @@
           <%= image_tag "http://cdn.onlinewebfonts.com/svg/img_489991.png" %>
           <!-- -------------Figuring out how many unread messages----------------------- -->
           <% counter = 0 %>
-          <% current_user.parking_spots.each { |spot| spot.bookings.each { |booking| counter += 1 if booking.notification.seen == false } } %>
+          <% unless current_user.parking_spots[0].bookings.empty? %>
+          <% current_user.parking_spots.each { |spot| spot.bookings.each { |booking| counter += 1 if booking.notification && booking.notification.seen == false } } %>
+          <% end %>
           <!-- ------------------------------------------------------------------------- -->
           <h5 class="mb-0">Notifications (<%= counter %>)</h5>
         <% end %>

@@ -2,7 +2,9 @@
   <h1 class="text-center pb-3 pt-3 border-bottom">Notifications</h1>
   <% @notifications.each do |notification| %>
     <div class="col-11 parking-info-user d-flex p-2 align-items-center">
-      <%= cl_image_tag notification.booking.user.photo, class: 'avatar-large mr-3' %>
+      <%= link_to account_path(notification.booking.user) do%>
+        <%= cl_image_tag notification.booking.user.photo, class: 'avatar-large mr-3' %>
+      <% end %>
       <div>
         <p class="mb-0"><%= notification.booking.user.full_name %> has booked:</p>
         <p class="mb-0"><strong><%= notification.booking.parking_spot.title %></strong></p>
