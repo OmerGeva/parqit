@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :parking_spots
   has_one :account
+  has_many :notifications, through: :parking_spots, through: :bookings
 
   mount_uploader :photo, PhotoUploader
   private

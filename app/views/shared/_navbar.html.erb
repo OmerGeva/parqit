@@ -17,6 +17,16 @@
         </div>
       </li>
       <li class="p-3 border-top">
+        <%= link_to notifications_account_path(current_user.account), class: "navbar-img align-items-center justify-content-between d-flex" do %>
+          <%= image_tag "http://cdn.onlinewebfonts.com/svg/img_489991.png" %>
+          <!-- -------------Figuring out how many unread messages----------------------- -->
+          <% counter = 0 %>
+          <% current_user.parking_spots.each { |spot| spot.bookings.each { |booking| counter += 1 if booking.notification.seen == false } } %>
+          <!-- ------------------------------------------------------------------------- -->
+          <h5 class="mb-0">Notifications (<%= counter %>)</h5>
+        <% end %>
+      </li>
+      <li class="p-3 border-top">
         <%= link_to "/", class: "navbar-img align-items-center justify-content-between d-flex" do %>
           <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
           <h5 class="mb-0">Find Parking</h5>

@@ -6,6 +6,10 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    true
+  end
+
+  def notifications?
+    true
   end
 end

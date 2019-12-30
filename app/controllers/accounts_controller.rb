@@ -13,4 +13,13 @@ class AccountsController < ApplicationController
     end
   end
 
+  def notifications
+    @notifications = Notification.where(account: current_user.account)
+    @notifications.each do |notification|
+      notification.update(seen: true)
+    end
+
+    authorize current_user.account
+  end
+
 end

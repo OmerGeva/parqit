@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.parking_spot = ParkingSpot.find(params[:parking_spot_id])
     @booking.total_price = params[:booking][:duration].to_i * @booking.parking_spot.price
-
+    Notification.create(account: @booking.parking_spot.user.account, booking: @booking)
     if @booking.save
 
       redirect_to account_path(current_user)
