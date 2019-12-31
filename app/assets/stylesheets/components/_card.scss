@@ -20,6 +20,19 @@ a {
   width: 120px;
   object-fit: cover;
 }
+.card-parking-spot-with-link{
+  overflow: hidden;
+  display: flex;
+  height: 120px;
+  background: white;
+  align-items: center;
+
+  img{
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+}
 
 .card-parking-spot h2 {
   font-size: 16px;
