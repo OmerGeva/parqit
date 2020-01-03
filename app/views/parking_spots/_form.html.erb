@@ -1,9 +1,9 @@
 <div class="col-8">
   <%= simple_form_for [account, parking_spot] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :address %>
-  <%= f.input :price, input_html: { id: 'price-slider' } %>
+  <%= f.input :title, placeholder: 'Title', label: false, input_html: { class: 'mt-4'} %>
+  <%= f.input :description, placeholder: 'Description', label: false, input_html: { class: 'mt-2'} %>
+  <%= f.input :address, placeholder: 'Address', label: false, input_html: { class: 'mt-2'} %>
+  <%= f.input :price, input_html: { id: 'price-slider',}, label: false %>
   <%= image_tag "", width: 200, class: "hidden", id: "photo-preview" %>
   <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Upload Photo' %>
   <%= f.input :photo_cache, as: :hidden %>

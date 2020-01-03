@@ -4,8 +4,8 @@
     <% @bookings.each do |booking| %>
       <div class="card-parking-spot mb-3">
         <%= cl_image_tag booking.parking_spot.photo, height: 300, width: 400, crop: :fill %>
-        <div class="card-parking-spot-infos align-items-center">
-          <h4 class="text-center mb-2"><%= booking.parking_spot.title %></h4>
+        <div class="card-parking-spot-infos align-items-center flex-grower text-center">
+          <h2 class="text-center mb-2"><%= booking.parking_spot.title %></h2>
           <p class="mb-2"><strong><%= booking.date.strftime('%e %B') %></strong>, <%= booking.start_time.strftime('%T').chomp(':00') %></strong> - <strong><%= booking.end_time.strftime('%T').chomp(':00') %></p>
           <div class="d-flex">
             <button type="button" class="btn btn-primary btn-block mt-auto mb-2 ml-1" data-toggle="modal" data-target="#bookParkingSpot">

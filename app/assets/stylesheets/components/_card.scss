@@ -88,9 +88,13 @@ a {
   }
 }
 
-.flex-grower{
+.flex-grower-with-d-flex{
   display: flex;
   align-items: center;
+  flex-grow: 1;
+}
+
+.flex-grower{
   flex-grow: 1;
 }
 
