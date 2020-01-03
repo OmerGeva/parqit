@@ -1,38 +1,40 @@
 <div class="container mt-5">
   <h1 class="text-center pb-3 pt-3 border-bottom">Notifications</h1>
-  <% unless @notifications.empty? %>
-    <% @notifications.each do |notification| %>
-      <% if notification.notification_type == 'booking' %>
-        <div class="col-11 parking-info-user d-flex p-2 align-items-center" data-notification-id="<%= notification.id %>">
-          <%= link_to account_path(User.find(notification.sent_by)) do%>
-            <%= cl_image_tag User.find(notification.sent_by).photo, class: 'avatar-large mr-3' %>
-          <% end %>
-          <div>
-            <p class="mb-0"><%= User.find(notification.sent_by).full_name %> has booked:</p>
-            <p class="mb-0"><strong><%= Booking.find(notification.booking_number).parking_spot.title %></strong></p>
-            <p class="mb-0"><%= Booking.find(notification.booking_number).date.strftime('%e %B') %> <%= Booking.find(notification.booking_number).start_time.strftime('%T').match(/^\d{2}:\d{2}/) %>  - <%= Booking.find(notification.booking_number).end_time.strftime('%T').match(/^\d{2}:\d{2}/)%></p>
-            <p class="mb-0"> </p>
+  <div id="notification-list">
+    <% unless @notifications.empty? %>
+      <% @notifications.each do |notification| %>
+        <% if notification.notification_type == 'booking' %>
+          <div class="col-11 parking-info-user d-flex p-2 align-items-center" data-notification-id="<%= notification.id %>">
+            <%= link_to account_path(User.find(notification.sent_by)) do%>
+              <%= cl_image_tag User.find(notification.sent_by).photo, class: 'avatar-large mr-3' %>
+            <% end %>
+            <div>
+              <p class="mb-0"><%= User.find(notification.sent_by).full_name %> has booked:</p>
+              <p class="mb-0"><strong><%= Booking.find(notification.booking_number).parking_spot.title %></strong></p>
+              <p class="mb-0"><%= Booking.find(notification.booking_number).date.strftime('%e %B') %> <%= Booking.find(notification.booking_number).start_time.strftime('%T').match(/^\d{2}:\d{2}/) %>  - <%= Booking.find(notification.booking_number).end_time.strftime('%T').match(/^\d{2}:\d{2}/)%></p>
+              <p class="mb-0"> </p>
+            </div>
+            <%= link_to notification_path(notification), method: :delete, remote: true do%>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
           </div>
-          <%= link_to notification_path(notification), method: :delete, remote: true do%>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
-        </div>
-      <% elsif notification.notification_type == 'cancelled_booking' %>
-        <div class="col-11 parking-info-user d-flex p-2 align-items-center" data-notification-id="<%= notification.id %>">
-          <%= link_to account_path(User.find(notification.sent_by)) do%>
-            <%= cl_image_tag User.find(notification.sent_by).photo, class: 'avatar-large mr-3' %>
-          <% end %>
-          <div>
-            <p class="mb-0"><%= notification.content %></p>
-            <p class="mb-0"> </p>
+        <% elsif notification.notification_type == 'cancelled_booking' %>
+          <div class="col-11 parking-info-user d-flex p-2 align-items-center" data-notification-id="<%= notification.id %>">
+            <%= link_to account_path(User.find(notification.sent_by)) do%>
+              <%= cl_image_tag User.find(notification.sent_by).photo, class: 'avatar-large mr-3' %>
+            <% end %>
+            <div>
+              <p class="mb-0"><%= notification.content %></p>
+              <p class="mb-0"> </p>
+            </div>
+            <%= link_to notification_path(notification), method: :delete, remote: true do%>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
           </div>
-          <%= link_to notification_path(notification), method: :delete, remote: true do%>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
-        </div>
+        <% end %>
       <% end %>
+    <% else %>
+      <h4 class="text-center mt-4"><em>You have no notifications</em></h4>
     <% end %>
-  <% else %>
-    <h4 class="text-center mt-4"><em>You have no notifications</em></h4>
-  <% end %>
+  </div>
 </div>

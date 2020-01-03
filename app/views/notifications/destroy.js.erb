@@ -1,2 +1,7 @@
 document.querySelector("[data-notification-id='<%= @notification.id %>']")
   .remove();
+
+if (document.querySelector('#notification-list').innerText === ""){
+  console.log('test');
+  document.querySelector('#notification-list').innerHTML = "<h4 class='text-center mt-4'><em>You have no notifications</em></h4>";
+}
