@@ -8,7 +8,7 @@ Account.destroy_all
 User.destroy_all
 
 ########################## Making Users and Accounts ##########################
-puts 'Creating users...'
+puts 'Creating Users...'
 
 user1 = User.create(
   email: 'sponge@bob.com',
@@ -93,7 +93,7 @@ Account.create(user: dean)
 
 
 ########################## Making Parking Spots ##########################
-puts "creating Parking Spots....."
+puts "Creating Parking Spots....."
 parkingspot1 = ParkingSpot.new(user: user1, description: "Located at end of the first floor, row C", title: "Best Parking in Tel Aviv", price: 20, address: 'Allenby 24, Tel Aviv-Yafo, Israel')
 parkingspot1.remote_photo_url = 'http://1.bp.blogspot.com/-e4v0DH3xkHk/VPU_c5Df0kI/AAAAAAAAEyc/YGKbG65bEV4/s1600/reserved.jpg'
 parkingspot1.save!

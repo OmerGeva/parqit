@@ -32,7 +32,7 @@
                     </div>
                   </div>
                   <button id="cancel-booking" class="btn btn-primary btn-block p-0 mt-1 mb-1">Cancel Booking</button>
-                  <%= link_to 'Cancel', booking_path(booking), id: 'delete-booking-btn', style: 'display: none;', method: :delete %>
+                  <%= link_to 'Cancel', cancel_booking_path(booking), id: 'delete-booking-btn', style: 'display: none;', method: :delete %>
                 </div>
               </div>
             <% end %>

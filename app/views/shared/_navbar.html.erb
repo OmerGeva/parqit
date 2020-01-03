@@ -19,13 +19,7 @@
       <li class="p-3 border-top">
         <%= link_to notifications_account_path(current_user.account), class: "navbar-img align-items-center justify-content-between d-flex" do %>
           <%= image_tag "notification.png" %>
-          <!-- -------------Figuring out how many unread messages----------------------- -->
-          <% counter = 0 %>
-          <% unless current_user.parking_spots.empty? %>
-            <% current_user.parking_spots.each { |spot| spot.bookings.each { |booking| counter += 1 if booking.notification && booking.notification.seen == false } unless spot.bookings.empty?} %>
-          <% end %>
-          <!-- ------------------------------------------------------------------------- -->
-          <h5 class="mb-0">Notifications (<%= counter %>)</h5>
+          <h5 class="mb-0">Notifications (<%= Notification.where(received_by: current_user.id, seen: false).count %>)</h5>
         <% end %>
       </li>
       <li class="p-3 border-top">

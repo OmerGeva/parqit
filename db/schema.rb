@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_152218) do
+ActiveRecord::Schema.define(version: 2020_01_03_055849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,15 @@ ActiveRecord::Schema.define(version: 2019_12_30_152218) do
 
   create_table "notifications", force: :cascade do |t|
     t.bigint "account_id"
-    t.bigint "booking_id"
     t.boolean "seen", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notification_type"
+    t.string "content"
+    t.integer "sent_by"
+    t.integer "received_by"
+    t.integer "booking_number"
     t.index ["account_id"], name: "index_notifications_on_account_id"
-    t.index ["booking_id"], name: "index_notifications_on_booking_id"
   end
 
   create_table "parking_spots", force: :cascade do |t|
@@ -91,7 +94,6 @@ ActiveRecord::Schema.define(version: 2019_12_30_152218) do
   add_foreign_key "bookings", "parking_spots"
   add_foreign_key "bookings", "users"
   add_foreign_key "notifications", "accounts"
-  add_foreign_key "notifications", "bookings"
   add_foreign_key "parking_spots", "users"
   add_foreign_key "reviews", "parking_spots"
   add_foreign_key "reviews", "users"

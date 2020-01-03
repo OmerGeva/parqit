@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :bookings, only: [:destroy]
+  resources :bookings, only: [:destroy] do
+    member do
+      delete 'cancel', to: 'bookings#cancel_booking'
+    end
+  end
 
 end
