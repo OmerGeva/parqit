@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
     ######################### SENT_BY: THE PARKING SPOT OWNER'S ID, AND RECEIVED_BY: THE PERSON WHO BOOKED'S ID #########################
 
     @booking = Booking.find(params[:id])
-    Notification.find_by(booking_number: @booking.id).destroy
+    Notification.find_by(booking_number: @booking.id).destroy if Notification.find_by(booking_number: @booking.id)
     content = "#{current_user.full_name} has cancelled your reservation for #{@booking.parking_spot.title}"
     Notification.create(account: @booking.parking_spot.user.account, notification_type: 'cancelled_booking', content: content, sent_by: current_user.id, received_by: @booking.user.id)
     @booking.destroy
@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
     ######################### WHEN A USER CANCELS HIS UPCOMING BOOKING ################################################################
     ######################### SENT_BY: THE PERSON WHO BOOKED'S ID AND RECEIVED_BY: THE PARKING SPOT OWNER'S ID #########################
     @booking = Booking.find(params[:id])
-    Notification.find_by(booking_number: @booking.id).destroy
+    Notification.find_by(booking_number: @booking.id).destroy if Notification.find_by(booking_number: @booking.id)
 
     content = "#{current_user.full_name} has cancelled the reservation for #{@booking.parking_spot.title}"
     Notification.create(account: @booking.parking_spot.user.account, notification_type: 'cancelled_booking', content: content, sent_by: current_user.id, received_by: @booking.parking_spot.user.id)

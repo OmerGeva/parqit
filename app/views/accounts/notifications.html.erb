@@ -3,7 +3,7 @@
   <% unless @notifications.empty? %>
     <% @notifications.each do |notification| %>
       <% if notification.notification_type == 'booking' %>
-        <div class="col-11 parking-info-user d-flex p-2 align-items-center">
+        <div class="col-11 parking-info-user d-flex p-2 align-items-center" data-notification-id="<%= notification.id %>">
           <%= link_to account_path(User.find(notification.sent_by)) do%>
             <%= cl_image_tag User.find(notification.sent_by).photo, class: 'avatar-large mr-3' %>
           <% end %>
@@ -13,9 +13,12 @@
             <p class="mb-0"><%= Booking.find(notification.booking_number).date.strftime('%e %B') %> <%= Booking.find(notification.booking_number).start_time.strftime('%T').match(/^\d{2}:\d{2}/) %>  - <%= Booking.find(notification.booking_number).end_time.strftime('%T').match(/^\d{2}:\d{2}/)%></p>
             <p class="mb-0"> </p>
           </div>
+          <%= link_to notification_path(notification), method: :delete, remote: true do%>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
         </div>
       <% elsif notification.notification_type == 'cancelled_booking' %>
-        <div class="col-11 parking-info-user d-flex p-2 align-items-center">
+        <div class="col-11 parking-info-user d-flex p-2 align-items-center" data-notification-id="<%= notification.id %>">
           <%= link_to account_path(User.find(notification.sent_by)) do%>
             <%= cl_image_tag User.find(notification.sent_by).photo, class: 'avatar-large mr-3' %>
           <% end %>
@@ -23,6 +26,9 @@
             <p class="mb-0"><%= notification.content %></p>
             <p class="mb-0"> </p>
           </div>
+          <%= link_to notification_path(notification), method: :delete, remote: true do%>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
         </div>
       <% end %>
     <% end %>

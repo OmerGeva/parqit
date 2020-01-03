@@ -15,6 +15,7 @@ class AccountsController < ApplicationController
 
   def notifications
     @notifications = Notification.where(received_by: current_user.id)
+    @notifications = @notifications.reverse
     @notifications.each do |notification|
       notification.update(seen: true)
     end
