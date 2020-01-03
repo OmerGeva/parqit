@@ -15,7 +15,7 @@
               <p class="mb-0"> </p>
             </div>
             <%= link_to notification_path(notification), method: :delete, remote: true do%>
-              <i class="far fa-trash-alt"></i>
+              <i class="far fa-trash-alt ml-3"></i>
             <% end %>
           </div>
         <% elsif notification.notification_type == 'cancelled_booking' %>
@@ -28,7 +28,7 @@
               <p class="mb-0"> </p>
             </div>
             <%= link_to notification_path(notification), method: :delete, remote: true do%>
-              <i class="far fa-trash-alt"></i>
+              <i class="far fa-trash-alt ml-3"></i>
             <% end %>
           </div>
         <% end %>

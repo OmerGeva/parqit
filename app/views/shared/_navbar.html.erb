@@ -19,7 +19,11 @@
       <li class="p-3 border-top">
         <%= link_to notifications_account_path(current_user.account), class: "navbar-img align-items-center justify-content-between d-flex" do %>
           <%= image_tag "notification.png" %>
-          <h5 class="mb-0">Notifications (<%= Notification.where(received_by: current_user.id, seen: false).count %>)</h5>
+          <% if Notification.where(received_by: current_user.id, seen: false).count > 0 %>
+            <h5 class="mb-0">Notifications (<strong><%= Notification.where(received_by: current_user.id, seen: false).count %></strong>)</h5>
+          <% else %>
+            <h5 class="mb-0">Notifications (<%= Notification.where(received_by: current_user.id, seen: false).count %>)</h5>
+          <% end %>
         <% end %>
       </li>
       <li class="p-3 border-top">
