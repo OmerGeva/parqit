@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:show] do
     resources :parking_spots, only: [:new, :create]
+    resources :bookings, only: [:index]
     member do
       get 'notifications', to: 'accounts#notifications'
     end

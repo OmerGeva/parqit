@@ -31,7 +31,7 @@
                         <p><strong><%= booking.date.strftime('%e %B') %></strong> <%= booking.start_time.strftime('%T') %> - <%= booking.end_time.strftime('%T') %></p>
                     </div>
                   </div>
-                  <button id="sweet-alert-demo" class="btn btn-primary btn-block p-0 mt-1 mb-1">Cancel Booking</button>
+                  <button id="cancel-booking" class="btn btn-primary btn-block p-0 mt-1 mb-1">Cancel Booking</button>
                   <%= link_to 'Cancel', booking_path(booking), id: 'delete-booking-btn', style: 'display: none;', method: :delete %>
                 </div>
               </div>

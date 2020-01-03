@@ -1,4 +1,13 @@
 class BookingsController < ApplicationController
+
+  def index
+    #TODO - GET ALL THE USER'S BOOKED PARKING SPOTS' BOOKINGS AND RETURN THEM IN AN ARRAY (@bookings)
+
+    current_user.parking_spots.each do |spot|
+      @bookings = policy_scope(Booking.where(parking_spot: spot))
+    end
+  end
+
   def new
     @booking = Booking.new
   end
@@ -19,6 +28,7 @@ class BookingsController < ApplicationController
 
     authorize @booking
   end
+
 
   def destroy
     @booking = Booking.find(params[:id])

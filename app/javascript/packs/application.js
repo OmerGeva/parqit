@@ -22,9 +22,9 @@ previewImageOnFileSelect();
 initMapbox();
 initAddressAutocomplete();
 initSliders();
-initSweetalert('#sweet-alert-demo', {
+initSweetalert('#cancel-booking', {
   title: "Are you sure?",
-  text: "Your booking will be permanently deleted",
+  text: "The booking will be permanently deleted",
   icon: "warning",
   buttons: true,
   dangerMode: true,

@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <h2 class='text-center pt-2'>Your booked spots</h2>
+  <% unless @bookings.empty? %>
+    <% @bookings.each do |booking| %>
+      <div class="card-parking-spot mb-3">
+        <%= cl_image_tag booking.parking_spot.photo, height: 300, width: 400, crop: :fill %>
+        <div class="card-parking-spot-infos align-items-center">
+          <h4 class="text-center mb-2"><%= booking.parking_spot.title %></h4>
+          <p class="mb-2"><strong><%= booking.date.strftime('%e %B') %></strong>, <%= booking.start_time.strftime('%T').chomp(':00') %></strong> - <strong><%= booking.end_time.strftime('%T').chomp(':00') %></p>
+          <div class="d-flex">
+            <button type="button" class="btn btn-primary btn-block mt-auto mb-2 ml-1" data-toggle="modal" data-target="#bookParkingSpot">
+              View
+            </button>
+            <button id="cancel-booking" class="btn btn-danger btn-block mt-0 mb-2 ml-1">Cancel</button>
+            <%= link_to 'Cancel', booking_path(booking), id: 'delete-booking-btn', style: 'display: none;', method: :delete %>
+          </div>
+          <div class="modal fade" id="bookParkingSpot" tabindex="-1" role="dialog" aria-labelledby="bookParkingSpotTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle"><%= booking.parking_spot.title %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="d-flex align-items-center">
+                      <%= link_to account_path(booking.user)  do%>
+                      <%= cl_image_tag booking.user.photo, id: "avatar-manage-bookings-popup", class: 'mr-3' %>
+                      <% end %>
+                      <div class="d-flex align-items-end">
+                        <div>
+                          <h2><%= booking.user.full_name %> has booked your spot!</h2>
+                          <p>Booking is on <strong><%= booking.date.strftime('%e %B') %></strong></p>
+                          <p>From <strong><%= booking.start_time.strftime('%T').chomp(':00') %></strong> to <strong><%= booking.end_time.strftime('%T').chomp(':00') %></strong></p>
+                        </div>
+                        <h5>$<%= booking.total_price %></h5>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="card-parking-spot mb-3">
+      <h5 class="m-auto">You have no upcoming bookings.</h5>
+    </div>
+  <% end %>
+</div>

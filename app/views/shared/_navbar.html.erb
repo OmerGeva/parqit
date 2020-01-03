@@ -18,7 +18,7 @@
       </li>
       <li class="p-3 border-top">
         <%= link_to notifications_account_path(current_user.account), class: "navbar-img align-items-center justify-content-between d-flex" do %>
-          <%= image_tag "http://cdn.onlinewebfonts.com/svg/img_489991.png" %>
+          <%= image_tag "notification.png" %>
           <!-- -------------Figuring out how many unread messages----------------------- -->
           <% counter = 0 %>
           <% unless current_user.parking_spots.empty? %>
@@ -30,19 +30,25 @@
       </li>
       <li class="p-3 border-top">
         <%= link_to "/", class: "navbar-img align-items-center justify-content-between d-flex" do %>
-          <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
+          <%= image_tag "parking.png" %>
           <h5 class="mb-0">Find Parking</h5>
         <% end %>
       </li>
       <li class="p-3 border-top">
         <%= link_to new_account_parking_spot_path(current_user.account.id), class: "navbar-img align-items-center justify-content-between d-flex mouse-hover" do%>
-          <%= image_tag "https://pngimage.net/wp-content/uploads/2018/06/plus-icons-png-6.png"%>
+          <%= image_tag "plus.png"%>
           <h5 class="mb-0">Add a new spot</h5>
         <% end %>
       </li>
       <li class="p-3 border-top">
+        <%= link_to account_bookings_path(current_user.account.id), class: "navbar-img align-items-center justify-content-between d-flex mouse-hover" do%>
+          <%= image_tag "https://www.svgrepo.com/show/70453/car-transport.svg"%>
+          <h5 class="mb-0">Manage Spots</h5>
+        <% end %>
+      </li>
+      <li class="p-3 border-top">
         <%= link_to destroy_user_session_path, class: "navbar-img align-items-center justify-content-between d-flex mouse-hover", method: :delete do%>
-          <%= image_tag "https://png.pngtree.com/svg/20170901/logout_584613.png"%>
+          <%= image_tag "logout.png"%>
           <h5 class="mb-0">Log out</h5>
         <% end %>
       </li>
@@ -57,7 +63,7 @@
           </div>
           <div class="p-3">
             <%= link_to new_user_session_path, class: "d-flex align-items-center justify-content-between navbar-img mouse-hover" do%>
-                <%= image_tag "https://www.groundai.com/static/groundai/img/avatar-placeholder.png"%>
+                <%= image_tag "avatar.png"%>
               <h4>Log In</h4>
             <% end %>
           </div>
@@ -65,7 +71,7 @@
       </li>
      <li class="p-3 border-top">
        <%= link_to "/", class: "navbar-img align-items-center justify-content-between d-flex" do %>
-         <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_265937.png" %>
+         <%= image_tag "parking.png" %>
          <h5 class="mb-0">Find Parking</h5>
        <% end %>
      </li>
